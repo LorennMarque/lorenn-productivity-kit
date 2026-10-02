@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TimeTill</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <a class="back" href="index.html">Inicio</a>
+    <main class="app">
+      <p class="kicker">TimeTill</p>
+      <label class="field">
+        <span>Hora</span>
+        <input id="target" type="time" step="60" autofocus>
+      </label>
+      <div class="readout">
+        <p class="hint" id="hint" hidden>Queda</p>
+        <p class="digits is-idle" id="remain">—</p>
+        <div
+          class="track"
+          id="track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Progreso hasta la hora"
+        >
+          <span class="fill" id="fill"></span>
+        </div>
+      </div>
+    </main>
+    <script src="js/timetill.js"></script>
+  </body>
+</html>

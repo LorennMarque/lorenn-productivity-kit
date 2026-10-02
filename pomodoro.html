@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pomodoro</title>
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <a class="back" href="index.html">Inicio</a>
+    <main class="app">
+      <p class="kicker">Pomodoro</p>
+      <div class="readout">
+        <p class="digits" id="digits">25:00</p>
+        <div
+          class="track"
+          id="track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+          aria-label="Progreso del pomodoro"
+        >
+          <span class="fill" id="fill"></span>
+        </div>
+      </div>
+      <div class="actions">
+        <button type="button" id="toggle">Iniciar</button>
+        <button type="button" id="reset">Reiniciar</button>
+      </div>
+    </main>
+    <script src="js/pomodoro.js"></script>
+  </body>
+</html>

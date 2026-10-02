@@ -1,0 +1,289 @@
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/outfit-300.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("../fonts/outfit-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: dark;
+  --bg: #0f0f0f;
+  --fg: #f3f3f3;
+  --muted: #a1a1a1;
+  --line: #2a2a2a;
+  --font: "Outfit", "Avenir Next", "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #2e2e2e;
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 1px solid rgba(243, 243, 243, 0.75);
+  outline-offset: 0.45rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: 0;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 400;
+  font-size: 1.02rem;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  padding: 0.45rem 0.15rem;
+}
+
+button:hover,
+a:hover {
+  color: var(--fg);
+}
+
+.back {
+  position: fixed;
+  top: 2.75rem;
+  left: 2.75rem;
+  color: var(--muted);
+  font-size: 0.98rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.home,
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.home {
+  position: relative;
+  padding: 6rem 1.5rem 8rem;
+}
+
+.greeting {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(1.9rem, 7vw, 5.15rem);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  text-align: center;
+}
+
+.greeting span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(-0.55em);
+  animation: cascade 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.shortcuts {
+  position: absolute;
+  bottom: 12vh;
+  display: flex;
+  gap: 4.5rem;
+  animation: rise 0.9s ease 0.55s both;
+}
+
+.shortcuts a {
+  color: var(--muted);
+  font-size: 1.08rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding: 0.4rem 0.1rem;
+}
+
+.app {
+  gap: clamp(3.25rem, 9vh, 5rem);
+  padding: 7rem 1.5rem 4rem;
+}
+
+.kicker,
+.field,
+.hint {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+.kicker {
+  font-size: 1.02rem;
+  letter-spacing: 0.03em;
+}
+
+.field,
+.hint {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+input[type="time"] {
+  width: 12.25rem;
+  max-width: calc(100vw - 3rem);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  color: var(--fg);
+  font: inherit;
+  font-size: 1.4rem;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  text-align: center;
+  padding: 0.35rem 0.25rem 0.55rem;
+  text-transform: none;
+  color-scheme: dark;
+}
+
+input[type="time"]:focus-visible {
+  outline: none;
+  border-bottom-color: var(--fg);
+}
+
+input[type="time"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.55;
+  filter: invert(1);
+}
+
+.readout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.35rem;
+}
+
+.digits {
+  margin: 0;
+  font-size: clamp(3.4rem, 10vw, 6.25rem);
+  font-weight: 300;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+  font-variant-numeric: tabular-nums;
+}
+
+.digits.is-idle,
+.readout:has(.digits.is-idle) .track {
+  display: none;
+}
+
+.track {
+  width: 7.5rem;
+  height: 2px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--fg);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.25s linear;
+}
+
+.actions {
+  display: flex;
+  gap: 2.75rem;
+}
+
+@keyframes cascade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.45rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .back {
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+
+  .shortcuts {
+    gap: 2.25rem;
+  }
+}
+
+@media (max-height: 520px) {
+  .home {
+    gap: 4rem;
+  }
+
+  .shortcuts {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .greeting span,
+  .shortcuts {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .fill {
+    transition: none;
+  }
+}
